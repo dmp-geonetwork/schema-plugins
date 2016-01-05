@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dmp="http://www.defence.gov.au/dmp" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dqc="http://standards.iso.org/iso/19157/-2/dqc/1.0" xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0" xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0" xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0" xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/1.0" xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0" targetNamespace="http://www.defence.gov.au/dmp" elementFormDefault="qualified" version="1.0">
+	<!--Import xsd's for all relevant <namespace_prefix>:elementName referred to in this file-->
+	<import namespace="http://standards.iso.org/iso/19115/-3/gco/1.0" schemaLocation="../standards.iso.org/iso/19115/-3/gco/1.0/gco.xsd"/>
+	<import namespace="http://standards.iso.org/iso/19115/-3/mco/1.0" schemaLocation="../standards.iso.org/iso/19115/-3/mco/1.0/mco.xsd"/>
+	<import namespace="http://standards.iso.org/iso/19115/-3/mdb/1.0" schemaLocation="../standards.iso.org/iso/19115/-3/mdb/1.0/mdb.xsd"/>
+	<annotation>
+		<documentation>
+This file contains extensions of the ISO19115-3 schema 
+objects for the Defence Metadata Profile (DMP) Version 3.0
+Add DMP_SecurityConstraints as extension for MD_SecurityConstraints
+adding the 'SecurityAttributesGroup' as per the Data Dictionary in DMP v3.0
+
+Defines root element in 'dmp' namespace as dmp:MD_Metadata instead of standard mdb:MD_Metadata
+to distinguish metadata in the Defence Metadata Profile
+
+History:
+
+A. Walsh 23-11-2015 initial version 
+
+		</documentation>
+	</annotation>
+	<!--Define Type for MD_Metadata adding attribute for gco:isoType -->
+	<complexType name="MD_Metadata_Type">
+		<annotation>
+			<documentation>
+Extends element MD_Metadata and adds attribute gco:isoType
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="mdb:MD_Metadata_Type">
+				<attribute ref="gco:isoType" use="required" fixed="mdb:MD_Metadata"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<!--Define root element MD_Metadata but in 'dmp' namespace and inherit all elements from mdb:MD_Metadata-->
+	<element name="MD_Metadata" type="dmp:MD_Metadata_Type" substitutionGroup="mdb:MD_Metadata"/>
+	<complexType name="MD_Metadata_PropertyType">
+		<sequence minOccurs="0">
+			<element ref="dmp:MD_Metadata"/>
+		</sequence>
+		<attributeGroup ref="gco:ObjectReference"/>
+		<attribute ref="gco:nilReason"/>
+	</complexType>
+	<!-- ====================================================================== -->
+	<!-- Add DMP_SecurityConstraints as extension for MD_SecurityConstraints -->
+	<!-- ====================================================================== -->
+	<element name="DMP_SecurityConstraints" type="dmp:DMP_SecurityConstraints_Type" substitutionGroup="mco:MD_SecurityConstraints"/>
+	<complexType name="DMP_SecurityConstraints_Type">
+		<annotation>
+			<documentation>
+				Add DMP_SecurityConstraints as an extension of mco:MD_SecurityConstraints_Type
+				Adds SecurityAttributesGroup
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="mco:MD_SecurityConstraints_Type">
+				<sequence minOccurs="0">
+					<element name="atomicEnergyMarking" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="classificationNonAUS" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="classificationReason" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="classifiedBy" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="compilationReason" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<!--Use a simple date type allowing only YYYY-MM-DD, ISO gco:Date_PropertyType was too flexible allowing YYYY, YYYY-MM YYYY-MM-DD and also a DateTime-->
+					<element name="declassDate" type="xs:date" minOccurs="0"/>
+					<element name="declassEvent" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="declassException" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="derivativelyClassifiedBy" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="derivedFrom" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="displayOnlyTo" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="disseminationControls" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="figSourceOpen" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="figSourceProtected" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="nonAUSControls" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="nonICMarkings" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ownerProducer" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+					<element name="releasableTo" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="sarIdentifier" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="sciControls" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="gco:isoType" use="required" fixed="mco:MD_SecurityConstraints"/>
+			</extension>
+		</complexContent>
+	</complexType>
+</schema>
