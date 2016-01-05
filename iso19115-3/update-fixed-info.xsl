@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
   xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:dmp="http://www.defence.gov.au/dmp"
   xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
   xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
   xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
@@ -100,6 +101,25 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="mdb:metadataStandard"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <!-- Add metadataProfile if it doesn't exist -->
+      <xsl:choose>
+        <xsl:when test="not(mdb:metadataProfile)">
+          <mdb:metadataProfile>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>Australian Defence Metadata Profile of ISO 19115-1:2014</gco:CharacterString>
+              </cit:title>
+              <cit:edition>
+                <gco:CharacterString>Version 3.0, November 25, 2015</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mdb:metadataProfile>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="mdb:metadataProfile"/>
         </xsl:otherwise>
       </xsl:choose>
       

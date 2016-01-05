@@ -11,37 +11,12 @@ objects for the Defence Metadata Profile (DMP) Version 3.0
 Add DMP_SecurityConstraints as extension for MD_SecurityConstraints
 adding the 'SecurityAttributesGroup' as per the Data Dictionary in DMP v3.0
 
-Defines root element in 'dmp' namespace as dmp:MD_Metadata instead of standard mdb:MD_Metadata
-to distinguish metadata in the Defence Metadata Profile
-
 History:
 
 A. Walsh 23-11-2015 initial version 
 
 		</documentation>
 	</annotation>
-	<!--Define Type for MD_Metadata adding attribute for gco:isoType -->
-	<complexType name="MD_Metadata_Type">
-		<annotation>
-			<documentation>
-Extends element MD_Metadata and adds attribute gco:isoType
-			</documentation>
-		</annotation>
-		<complexContent>
-			<extension base="mdb:MD_Metadata_Type">
-				<attribute ref="gco:isoType" use="required" fixed="mdb:MD_Metadata"/>
-			</extension>
-		</complexContent>
-	</complexType>
-	<!--Define root element MD_Metadata but in 'dmp' namespace and inherit all elements from mdb:MD_Metadata-->
-	<element name="MD_Metadata" type="dmp:MD_Metadata_Type" substitutionGroup="mdb:MD_Metadata"/>
-	<complexType name="MD_Metadata_PropertyType">
-		<sequence minOccurs="0">
-			<element ref="dmp:MD_Metadata"/>
-		</sequence>
-		<attributeGroup ref="gco:ObjectReference"/>
-		<attribute ref="gco:nilReason"/>
-	</complexType>
 	<!-- ====================================================================== -->
 	<!-- Add DMP_SecurityConstraints as extension for MD_SecurityConstraints -->
 	<!-- ====================================================================== -->
