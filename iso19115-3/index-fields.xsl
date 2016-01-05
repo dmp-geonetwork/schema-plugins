@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="2.0" 
+            xmlns:dmp="http://www.defence.gov.au/dmp"
             xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/1.0"
             xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0"
             xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
@@ -276,7 +277,7 @@
 
 	
 			<xsl:choose>
-				<xsl:when test="mri:resourceConstraints/mco:MD_SecurityConstraints">
+				<xsl:when test="mri:resourceConstraints/mco:MD_SecurityConstraints|mri:resourceConstraints/dmp:DMP_SecurityConstraints">
 					<Field name="secConstr" string="true" store="true" index="true"/>
 				</xsl:when>
 				<xsl:otherwise>
