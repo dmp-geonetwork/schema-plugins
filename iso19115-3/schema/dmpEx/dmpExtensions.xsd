@@ -20,7 +20,7 @@ A. Walsh 23-11-2015 initial version
 	<!-- ====================================================================== -->
 	<!-- Add DMP_SecurityConstraints as extension for MD_SecurityConstraints -->
 	<!-- ====================================================================== -->
-	<element name="DMP_SecurityConstraints" type="dmp:DMP_SecurityConstraints_Type" substitutionGroup="mco:MD_SecurityConstraints"/>
+	<element name="DMP_SecurityConstraints" type="dmp:DMP_SecurityConstraints_Type" substitutionGroup="mco:MD_Constraints"/>
 	<complexType name="DMP_SecurityConstraints_Type">
 		<annotation>
 			<documentation>
