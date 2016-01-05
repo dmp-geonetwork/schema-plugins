@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <editor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="../../config-editor.xsd"
+	xmlns:dmp="http://www.defence.gov.au/dmp"
   xmlns:gn="http://www.fao.org/geonetwork"
   xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
   xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/1.0"
@@ -269,7 +270,120 @@
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceSpecficUsage"/>
+					<!-- Add a new resourceConstraints the normal way -->
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+					<!-- DMP_SecurityConstraints -->
+          <field name="defenceSecurityConstraints" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:resourceConstraints[dmp:DMP_SecurityConstraints]" del=".">
+            <template>
+              <values>
+                <key label="atomicEnergyMarking" xpath="dmp:DMP_SecurityConstraints/dmp:atomicEnergyMarking/gco:CharacterString" 
+								     tooltip="atomicEnergyMarking"/>
+                <key label="classificationNonAUS" xpath="dmp:DMP_SecurityConstraints/dmp:classificationNonAUS/gco:CharacterString" 
+								     tooltip="classificationNonAUS"/>
+                <key label="classificationReason" xpath="dmp:DMP_SecurityConstraints/dmp:classificationReason/gco:CharacterString" 
+								     tooltip="classificationReason"/>
+                <key label="classifiedBy" xpath="dmp:DMP_SecurityConstraints/dmp:classifiedBy/gco:CharacterString" 
+								     tooltip="classifiedBy"/>
+                <key label="compilationReason" xpath="dmp:DMP_SecurityConstraints/dmp:compilationReason/gco:CharacterString" 
+								     tooltip="compilationReason"/>
+                <key label="declassDate"         xpath="dmp:DMP_SecurityConstraints/dmp:declassDate/gco:DateTime" use="date-local"/>
+                <key label="declassEvent" xpath="dmp:DMP_SecurityConstraints/dmp:declassEvent/gco:CharacterString" 
+								     tooltip="declassEvent"/>
+                <key label="declassException" xpath="dmp:DMP_SecurityConstraints/dmp:declassException/gco:CharacterString" 
+								     tooltip="declassException"/>
+                <key label="derivativelyClassifiedBy" xpath="dmp:DMP_SecurityConstraints/dmp:derivativelyClassifiedBy/gco:CharacterString" 
+								     tooltip="derivativelyClassifiedBy"/>
+                <key label="derivedFrom" xpath="dmp:DMP_SecurityConstraints/dmp:derivedFrom/gco:CharacterString" 
+								     tooltip="derivedFrom"/>
+                <key label="displayOnlyTo" xpath="dmp:DMP_SecurityConstraints/dmp:displayOnlyTo/gco:CharacterString" 
+								     tooltip="displayOnlyTo"/>
+                <key label="disseminationControls" xpath="dmp:DMP_SecurityConstraints/dmp:disseminationControls/gco:CharacterString" 
+								     tooltip="disseminationControls"/>
+                <key label="figSourceOpen" xpath="dmp:DMP_SecurityConstraints/dmp:figSourceOpen/gco:CharacterString" 
+								     tooltip="figSourceOpen"/>
+                <key label="figSourceProtected" xpath="dmp:DMP_SecurityConstraints/dmp:figSourceProtected/gco:CharacterString" 
+								     tooltip="figSourceProtected"/>
+                <key label="nonAUSControls" xpath="dmp:DMP_SecurityConstraints/dmp:nonAUSControls/gco:CharacterString" 
+								     tooltip="nonAUSControls"/>
+                <key label="nonICMarkings" xpath="dmp:DMP_SecurityConstraints/dmp:nonICMarkings/gco:CharacterString" 
+								     tooltip="nonICMarkings"/>
+                <key label="ownerProducer" xpath="dmp:DMP_SecurityConstraints/dmp:ownerProducer/gco:CharacterString" 
+								     tooltip="ownerProducer"/>
+                <key label="releasableTo" xpath="dmp:DMP_SecurityConstraints/dmp:releasableTo/gco:CharacterString" 
+								     tooltip="releasableTo"/>
+                <key label="sarIdentifier" xpath="dmp:DMP_SecurityConstraints/dmp:sarIdentifier/gco:CharacterString" 
+								     tooltip="sarIdentifier"/>
+                <key label="sciControls" xpath="dmp:DMP_SecurityConstraints/dmp:sciControls/gco:CharacterString" 
+								     tooltip="sciControls"/>
+              </values>
+              <snippet>
+								<mri:resourceConstraints>
+									<dmp:DMP_SecurityConstraints>
+										<dmp:atomicEnergyMarking>
+											<gco:CharacterString>{{atomicEnergyMarking}}</gco:CharacterString>
+										</dmp:atomicEnergyMarking>
+										<dmp:classificationNonAUS>
+											<gco:CharacterString>{{classificationNonAUS}}</gco:CharacterString>
+										</dmp:classificationNonAUS>
+										<dmp:classificationReason>
+											<gco:CharacterString>{{classificationReason}}</gco:CharacterString>
+										</dmp:classificationReason>
+										<dmp:classifiedBy>
+											<gco:CharacterString>{{classifiedBy}}</gco:CharacterString>
+										</dmp:classifiedBy>
+										<dmp:compilationReason>
+											<gco:CharacterString>{{compilationReason}}</gco:CharacterString>
+										</dmp:compilationReason>
+										<dmp:declassDate>
+											<gco:DateTime>{{declassDate}}</gco:DateTime>
+										</dmp:declassDate>
+										<dmp:declassEvent>
+											<gco:CharacterString>{{declassEvent}}</gco:CharacterString>
+										</dmp:declassEvent>
+										<dmp:declassException>
+											<gco:CharacterString>{{declassException}}</gco:CharacterString>
+										</dmp:declassException>
+										<dmp:derivativelyClassifiedBy>
+											<gco:CharacterString>{{derivativelyClassifiedBy}}</gco:CharacterString>
+										</dmp:derivativelyClassifiedBy>
+										<dmp:derivedFrom>
+											<gco:CharacterString>{{derivedFrom}}</gco:CharacterString>
+										</dmp:derivedFrom>
+										<dmp:displayOnlyTo>
+											<gco:CharacterString>{{displayOnlyTo}}</gco:CharacterString>
+										</dmp:displayOnlyTo>
+										<dmp:disseminationControls>
+											<gco:CharacterString>{{disseminationControls}}</gco:CharacterString>
+										</dmp:disseminationControls>
+										<dmp:figSourceOpen>
+											<gco:CharacterString>{{figSourceOpen}}</gco:CharacterString>
+										</dmp:figSourceOpen>
+										<dmp:figSourceProtected>
+											<gco:CharacterString>{{figSourceProtected}}</gco:CharacterString>
+										</dmp:figSourceProtected>
+										<dmp:nonAUSControls>
+											<gco:CharacterString>{{nonAUSControls}}</gco:CharacterString>
+										</dmp:nonAUSControls>
+										<dmp:nonICMarkings>
+											<gco:CharacterString>{{nonICMarkings}}</gco:CharacterString>
+										</dmp:nonICMarkings>
+										<dmp:ownerProducer>
+											<gco:CharacterString>{{ownerProducer}}</gco:CharacterString>
+										</dmp:ownerProducer>
+										<dmp:releasableTo>
+											<gco:CharacterString>{{releasableTo}}</gco:CharacterString>
+										</dmp:releasableTo>
+										<dmp:sarIdentifier>
+											<gco:CharacterString>{{sarIdentifier}}</gco:CharacterString>
+										</dmp:sarIdentifier>
+										<dmp:sciControls>
+											<gco:CharacterString>{{sciControls}}</gco:CharacterString>
+										</dmp:sciControls>
+									</dmp:DMP_SecurityConstraints>
+								</mri:resourceConstraints>
+              </snippet>
+            </template>
+        	</field>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialRepresentationType"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:temporalResolution"/>

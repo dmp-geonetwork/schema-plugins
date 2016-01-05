@@ -14,6 +14,8 @@ adding the 'SecurityAttributesGroup' as per the Data Dictionary in DMP v3.0
 History:
 
 A. Walsh 23-11-2015 initial version 
+S. Pigot 04-01-2016 move to mco:MD_Constraints substitution group, use gco:Date_PropertyType for declassDate but use 
+                    schematron condition to check that date is YYYY-MM-DD
 
 		</documentation>
 	</annotation>
@@ -36,8 +38,8 @@ A. Walsh 23-11-2015 initial version
 					<element name="classificationReason" type="gco:CharacterString_PropertyType" minOccurs="0"/>
 					<element name="classifiedBy" type="gco:CharacterString_PropertyType" minOccurs="0"/>
 					<element name="compilationReason" type="gco:CharacterString_PropertyType" minOccurs="0"/>
-					<!--Use a simple date type allowing only YYYY-MM-DD, ISO gco:Date_PropertyType was too flexible allowing YYYY, YYYY-MM YYYY-MM-DD and also a DateTime-->
-					<element name="declassDate" type="xs:date" minOccurs="0"/>
+					<!-- Allow only YYYY-MM-DD for this element - check conformance using schematron -->
+					<element name="declassDate" type="gco:Date_PropertyType" minOccurs="0"/>
 					<element name="declassEvent" type="gco:CharacterString_PropertyType" minOccurs="0"/>
 					<element name="declassException" type="gco:CharacterString_PropertyType" minOccurs="0"/>
 					<element name="derivativelyClassifiedBy" type="gco:CharacterString_PropertyType" minOccurs="0"/>
@@ -53,7 +55,6 @@ A. Walsh 23-11-2015 initial version
 					<element name="sarIdentifier" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
 					<element name="sciControls" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
 				</sequence>
-				<attribute ref="gco:isoType" use="required" fixed="mco:MD_SecurityConstraints"/>
 			</extension>
 		</complexContent>
 	</complexType>
