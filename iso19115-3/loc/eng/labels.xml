@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <labels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:dmp="http://www.defence.gov.au/dmp"
 			  xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
   			xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/1.0"
   			xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
@@ -932,6 +933,10 @@
 		<label>Security constraints</label>
 		<description>Handling restrictions imposed on the resource or metadata for national security
             or similar security concerns</description>
+	</element>
+	<element name="dmp:DMP_SecurityConstraints" id="73.1">
+		<label>Defence Security constraints</label>
+		<description>Handling restrictions imposed on the resource or metadata for defence security concerns</description>
 	</element>
 	<element name="mri:MD_ServiceIdentification" id="47.0">
 		<label>Service Identification</label>
