@@ -123,7 +123,6 @@
         </xsl:otherwise>
       </xsl:choose>
       
-      <xsl:apply-templates select="mdb:metadataProfile"/>
       <xsl:apply-templates select="mdb:alternativeMetadataReference"/>
       <xsl:apply-templates select="mdb:otherLocale"/>
       <xsl:apply-templates select="mdb:metadataLinkage"/>

@@ -273,7 +273,7 @@
 					<!-- Add a new resourceConstraints the normal way -->
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
 					<!-- DMP_SecurityConstraints -->
-          <field name="defenceSecurityConstraints" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:resourceConstraints[dmp:DMP_SecurityConstraints]" del=".">
+          <field name="defenceSecurityConstraints" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints[dmp:DMP_SecurityConstraints]" del=".">
             <template>
               <values>
 								<!-- from mco:MD_Constraints -->
