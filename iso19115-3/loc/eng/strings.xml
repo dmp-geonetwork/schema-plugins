@@ -96,5 +96,9 @@
   <ownerProducer>Owner Producer</ownerProducer>
   <releasableTo>Releasable To</releasableTo>
   <sarIdentifier>SAR Identifier</sarIdentifier>
-  <sciControls>	SCI Controls</sciControls>	
+  <sciControls>SCI Controls</sciControls>	
+	<useLimitation>Use Limitation</useLimitation>
+	<releasabilityStatement>Releasability Statement</releasabilityStatement>
+	<classification>Classification Code</classification>
+
 </strings>

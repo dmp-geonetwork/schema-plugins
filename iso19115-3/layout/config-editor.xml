@@ -276,6 +276,23 @@
           <field name="defenceSecurityConstraints" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:resourceConstraints[dmp:DMP_SecurityConstraints]" del=".">
             <template>
               <values>
+								<!-- from mco:MD_Constraints -->
+                <key label="useLimitation" xpath="dmp:DMP_SecurityConstraints/mco:useLimitation/gco:CharacterString" 
+								     tooltip="useLimitation"/>
+                <key label="releasabilityStatement" xpath="dmp:DMP_SecurityConstraints/mco:releasability/mco:MD_Releaseability/mco:statement/gco:CharacterString" 
+								     tooltip="releasabilityStatement"/>
+								<!-- could also use constraintApplicationScope, graphic, reference, (other elements of)
+								     releaseability, responsibleParty -->
+
+								<!-- from mco:MD_SecurityConstraints -->
+                <key label="classification" xpath="dmp:DMP_SecurityConstraints/mco:classification/mco:MD_ClassificationCode"
+								     tooltip="classification">
+									<codelist name="mco:MD_ClassificationCode"/>
+								</key>
+
+								<!-- could also use userNote, classificationSystem, handlingDescription --> 
+
+								<!-- from dmp:DMP_SecurityConstraints -->
                 <key label="atomicEnergyMarking" xpath="dmp:DMP_SecurityConstraints/dmp:atomicEnergyMarking/gco:CharacterString" 
 								     tooltip="atomicEnergyMarking"/>
                 <key label="classificationNonAUS" xpath="dmp:DMP_SecurityConstraints/dmp:classificationNonAUS/gco:CharacterString" 
@@ -286,7 +303,7 @@
 								     tooltip="classifiedBy"/>
                 <key label="compilationReason" xpath="dmp:DMP_SecurityConstraints/dmp:compilationReason/gco:CharacterString" 
 								     tooltip="compilationReason"/>
-                <key label="declassDate"         xpath="dmp:DMP_SecurityConstraints/dmp:declassDate/gco:DateTime" use="date-local"/>
+                <key label="declassDate"         xpath="dmp:DMP_SecurityConstraints/dmp:declassDate/gco:DateTime" use="gn-date-picker"/>
                 <key label="declassEvent" xpath="dmp:DMP_SecurityConstraints/dmp:declassEvent/gco:CharacterString" 
 								     tooltip="declassEvent"/>
                 <key label="declassException" xpath="dmp:DMP_SecurityConstraints/dmp:declassException/gco:CharacterString" 
@@ -319,6 +336,31 @@
               <snippet>
 								<mri:resourceConstraints>
 									<dmp:DMP_SecurityConstraints>
+										<!-- mco:MD_Constraints -->
+										<mco:useLimitation>
+											<gco:CharacterString>{{useLimitation}}</gco:CharacterString>
+										</mco:useLimitation>
+                    <gn:copy select="mco:constraintApplicationScope"/>
+                    <gn:copy select="mco:graphic"/>
+                    <gn:copy select="mco:reference"/>
+										<mco:releasability>
+											<mco:MD_Releasability>
+                    		<gn:copy select="mco:releasability/mco:MD_Releasability/mco:addressee"/>
+												<mco:statement>
+													<gco:CharacterString>{{releasabilityStatement}}</gco:CharacterString>
+												</mco:statement>
+                    		<gn:copy select="mco:releasability/mco:MD_Releasability/mco:reference"/>
+											</mco:MD_Releasability>
+										</mco:releasability>
+                    <gn:copy select="mco:responsibleParty"/>
+
+										<!-- mco:MD_SecurityConstraints -->
+										<gn:copy select="mco:classification"/>
+										<gn:copy select="mco:userNote"/>
+										<gn:copy select="mco:classificationSystem"/>
+										<gn:copy select="mco:handlingDescription"/>
+
+										<!-- dmp:DMP_SecurityConstraints -->
 										<dmp:atomicEnergyMarking>
 											<gco:CharacterString>{{atomicEnergyMarking}}</gco:CharacterString>
 										</dmp:atomicEnergyMarking>
