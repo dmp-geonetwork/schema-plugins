@@ -76,6 +76,7 @@
   <enum3>List of values is :</enum3>
 
 	<!-- DMP labels -->
+	<defenceSecurityConstraints>Defence Security Constraints</defenceSecurityConstraints>
 	<atomicEnergyMarking>Atomic Energy Marking</atomicEnergyMarking>
   <classificationNonAUS>Classification Non-AUS</classificationNonAUS>
   <classificationReason>Classification Reason</classificationReason>
