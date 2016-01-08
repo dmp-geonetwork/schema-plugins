@@ -271,19 +271,19 @@
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceSpecficUsage"/>
 					<!-- DMP_SecurityConstraints -->
-          <field name="defenceSecurityConstraints" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints[dmp:DMP_SecurityConstraints]" del=".">
+          <field name="defenceSecurityConstraints" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints/dmp:DMP_SecurityConstraints" del="..">
             <template>
               <values>
 								<!-- from mco:MD_Constraints -->
-                <key label="useLimitation" xpath="dmp:DMP_SecurityConstraints/mco:useLimitation/gco:CharacterString" 
-								     tooltip="useLimitation"/>
-                <key label="releasabilityStatement" xpath="dmp:DMP_SecurityConstraints/mco:releasability/mco:MD_Releasability/mco:statement/gco:CharacterString" 
-								     tooltip="releasabilityStatement"/>
+                <key label="useLimitation" xpath="mco:useLimitation/gco:CharacterString" 
+								     tooltip="useLimitation" use="textarea"/>
+                <key label="releasabilityStatement" xpath="mco:releasability/mco:MD_Releasability/mco:statement/gco:CharacterString" 
+								     tooltip="releasabilityStatement" use="textarea"/>
 								<!-- could also use constraintApplicationScope, graphic, reference, (other elements of)
 								     releasability, responsibleParty -->
 
 								<!-- from mco:MD_SecurityConstraints -->
-                <key label="classification" xpath="dmp:DMP_SecurityConstraints/mco:classification/mco:MD_ClassificationCode"
+                <key label="classification" xpath="mco:classification/mco:MD_ClassificationCode"
 								     tooltip="classification">
 									<codelist name="mco:MD_ClassificationCode"/>
 								</key>
@@ -291,48 +291,47 @@
 								<!-- could also use userNote, classificationSystem, handlingDescription --> 
 
 								<!-- from dmp:DMP_SecurityConstraints -->
-                <key label="atomicEnergyMarking" xpath="dmp:DMP_SecurityConstraints/dmp:atomicEnergyMarking/gco:CharacterString" 
-								     tooltip="atomicEnergyMarking"/>
-                <key label="classificationNonAUS" xpath="dmp:DMP_SecurityConstraints/dmp:classificationNonAUS/gco:CharacterString" 
-								     tooltip="classificationNonAUS"/>
-                <key label="classificationReason" xpath="dmp:DMP_SecurityConstraints/dmp:classificationReason/gco:CharacterString" 
-								     tooltip="classificationReason"/>
-                <key label="classifiedBy" xpath="dmp:DMP_SecurityConstraints/dmp:classifiedBy/gco:CharacterString" 
-								     tooltip="classifiedBy"/>
-                <key label="compilationReason" xpath="dmp:DMP_SecurityConstraints/dmp:compilationReason/gco:CharacterString" 
-								     tooltip="compilationReason"/>
-                <key label="declassDate"         xpath="dmp:DMP_SecurityConstraints/dmp:declassDate/gco:DateTime" use="gn-date-picker"/>
-                <key label="declassEvent" xpath="dmp:DMP_SecurityConstraints/dmp:declassEvent/gco:CharacterString" 
-								     tooltip="declassEvent"/>
-                <key label="declassException" xpath="dmp:DMP_SecurityConstraints/dmp:declassException/gco:CharacterString" 
-								     tooltip="declassException"/>
-                <key label="derivativelyClassifiedBy" xpath="dmp:DMP_SecurityConstraints/dmp:derivativelyClassifiedBy/gco:CharacterString" 
-								     tooltip="derivativelyClassifiedBy"/>
-                <key label="derivedFrom" xpath="dmp:DMP_SecurityConstraints/dmp:derivedFrom/gco:CharacterString" 
-								     tooltip="derivedFrom"/>
-                <key label="displayOnlyTo" xpath="dmp:DMP_SecurityConstraints/dmp:displayOnlyTo/gco:CharacterString" 
-								     tooltip="displayOnlyTo"/>
-                <key label="disseminationControls" xpath="dmp:DMP_SecurityConstraints/dmp:disseminationControls/gco:CharacterString" 
-								     tooltip="disseminationControls"/>
-                <key label="figSourceOpen" xpath="dmp:DMP_SecurityConstraints/dmp:figSourceOpen/gco:CharacterString" 
-								     tooltip="figSourceOpen"/>
-                <key label="figSourceProtected" xpath="dmp:DMP_SecurityConstraints/dmp:figSourceProtected/gco:CharacterString" 
-								     tooltip="figSourceProtected"/>
-                <key label="nonAUSControls" xpath="dmp:DMP_SecurityConstraints/dmp:nonAUSControls/gco:CharacterString" 
-								     tooltip="nonAUSControls"/>
-                <key label="nonICMarkings" xpath="dmp:DMP_SecurityConstraints/dmp:nonICMarkings/gco:CharacterString" 
-								     tooltip="nonICMarkings"/>
-                <key label="ownerProducer" xpath="dmp:DMP_SecurityConstraints/dmp:ownerProducer/gco:CharacterString" 
-								     tooltip="ownerProducer"/>
-                <key label="releasableTo" xpath="dmp:DMP_SecurityConstraints/dmp:releasableTo/gco:CharacterString" 
-								     tooltip="releasableTo"/>
-                <key label="sarIdentifier" xpath="dmp:DMP_SecurityConstraints/dmp:sarIdentifier/gco:CharacterString" 
-								     tooltip="sarIdentifier"/>
-                <key label="sciControls" xpath="dmp:DMP_SecurityConstraints/dmp:sciControls/gco:CharacterString" 
-								     tooltip="sciControls"/>
+                <key label="atomicEnergyMarking" xpath="dmp:atomicEnergyMarking/gco:CharacterString" 
+								     tooltip="atomicEnergyMarking" use="textarea"/>
+                <key label="classificationNonAUS" xpath="dmp:classificationNonAUS/gco:CharacterString" 
+								     tooltip="classificationNonAUS" use="textarea"/>
+                <key label="classificationReason" xpath="dmp:classificationReason/gco:CharacterString" 
+								     tooltip="classificationReason" use="textarea"/>
+                <key label="classifiedBy" xpath="dmp:classifiedBy/gco:CharacterString" 
+								     tooltip="classifiedBy" use="textarea"/>
+                <key label="compilationReason" xpath="dmp:compilationReason/gco:CharacterString" 
+								     tooltip="compilationReason" use="textarea"/>
+                <key label="declassDate"         xpath="dmp:declassDate/gco:DateTime" use="gn-date-picker"/>
+                <key label="declassEvent" xpath="dmp:declassEvent/gco:CharacterString" 
+								     tooltip="declassEvent" use="textarea"/>
+                <key label="declassException" xpath="dmp:declassException/gco:CharacterString" 
+								     tooltip="declassException" use="textarea"/>
+                <key label="derivativelyClassifiedBy" xpath="dmp:derivativelyClassifiedBy/gco:CharacterString" 
+								     tooltip="derivativelyClassifiedBy" use="textarea"/>
+                <key label="derivedFrom" xpath="dmp:derivedFrom/gco:CharacterString" 
+								     tooltip="derivedFrom" use="textarea"/>
+                <key label="displayOnlyTo" xpath="dmp:displayOnlyTo/gco:CharacterString" 
+								     tooltip="displayOnlyTo" use="textarea"/>
+                <key label="disseminationControls" xpath="dmp:disseminationControls/gco:CharacterString" 
+								     tooltip="disseminationControls" use="textarea"/>
+                <key label="figSourceOpen" xpath="dmp:figSourceOpen/gco:CharacterString" 
+								     tooltip="figSourceOpen" use="textarea"/>
+                <key label="figSourceProtected" xpath="dmp:figSourceProtected/gco:CharacterString" 
+								     tooltip="figSourceProtected" use="textarea"/>
+                <key label="nonAUSControls" xpath="dmp:nonAUSControls/gco:CharacterString" 
+								     tooltip="nonAUSControls" use="textarea"/>
+                <key label="nonICMarkings" xpath="dmp:nonICMarkings/gco:CharacterString" 
+								     tooltip="nonICMarkings" use="textarea"/>
+                <key label="ownerProducer" xpath="dmp:ownerProducer/gco:CharacterString" 
+								     tooltip="ownerProducer" use="textarea"/>
+                <key label="releasableTo" xpath="dmp:releasableTo/gco:CharacterString" 
+								     tooltip="releasableTo" use="textarea"/>
+                <key label="sarIdentifier" xpath="dmp:sarIdentifier/gco:CharacterString" 
+								     tooltip="sarIdentifier" use="textarea"/>
+                <key label="sciControls" xpath="dmp:sciControls/gco:CharacterString" 
+								     tooltip="sciControls" use="textarea"/>
               </values>
               <snippet>
-								<mri:resourceConstraints>
 									<dmp:DMP_SecurityConstraints>
 										<!-- mco:MD_Constraints -->
 										<mco:useLimitation>
@@ -420,7 +419,6 @@
 											<gco:CharacterString>{{sciControls}}</gco:CharacterString>
 										</dmp:sciControls>
 									</dmp:DMP_SecurityConstraints>
-								</mri:resourceConstraints>
               </snippet>
             </template>
         	</field>
