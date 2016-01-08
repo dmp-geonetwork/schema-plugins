@@ -270,8 +270,6 @@
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceSpecficUsage"/>
-					<!-- Add a new resourceConstraints the normal way -->
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
 					<!-- DMP_SecurityConstraints -->
           <field name="defenceSecurityConstraints" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints[dmp:DMP_SecurityConstraints]" del=".">
             <template>
@@ -279,10 +277,10 @@
 								<!-- from mco:MD_Constraints -->
                 <key label="useLimitation" xpath="dmp:DMP_SecurityConstraints/mco:useLimitation/gco:CharacterString" 
 								     tooltip="useLimitation"/>
-                <key label="releasabilityStatement" xpath="dmp:DMP_SecurityConstraints/mco:releasability/mco:MD_Releaseability/mco:statement/gco:CharacterString" 
+                <key label="releasabilityStatement" xpath="dmp:DMP_SecurityConstraints/mco:releasability/mco:MD_Releasability/mco:statement/gco:CharacterString" 
 								     tooltip="releasabilityStatement"/>
 								<!-- could also use constraintApplicationScope, graphic, reference, (other elements of)
-								     releaseability, responsibleParty -->
+								     releasability, responsibleParty -->
 
 								<!-- from mco:MD_SecurityConstraints -->
                 <key label="classification" xpath="dmp:DMP_SecurityConstraints/mco:classification/mco:MD_ClassificationCode"
