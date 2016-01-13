@@ -55,6 +55,7 @@ S. Pigot 04-01-2016 move to mco:MD_Constraints substitution group, use gco:Date_
 					<element name="sarIdentifier" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
 					<element name="sciControls" type="gco:CharacterString_PropertyType" minOccurs="0" maxOccurs="unbounded"/>
 				</sequence>
+				<attribute ref="gco:isoType" use="required" fixed="mco:MD_Constraints"/>
 			</extension>
 		</complexContent>
 	</complexType>
